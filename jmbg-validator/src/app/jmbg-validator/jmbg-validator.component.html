@@ -1,0 +1,65 @@
+<div class="container">
+  <h2>Validacija JMBG-a</h2>
+  <form (ngSubmit)="validateJMBG()" #jmbgForm="ngForm">
+    <div class="form-group">
+      <label for="name">Ime:</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="name"
+        name="name"
+        required
+        #nameInput="ngModel"
+        placeholder="Unesite vaše ime"
+      />
+      <div *ngIf="nameInput.invalid && nameInput.touched" class="error-message">
+        Ime je obavezno!
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="surname">Prezime:</label>
+      <input
+        type="text"
+        id="surname"
+        [(ngModel)]="surname"
+        name="surname"
+        required
+        #surnameInput="ngModel"
+        placeholder="Unesite vaše prezime"
+      />
+      <div *ngIf="surnameInput.invalid && surnameInput.touched" class="error-message">
+        Prezime je obavezno!
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="jmbg">JMBG:</label>
+      <input
+        type="text"
+        id="jmbg"
+        [(ngModel)]="jmbg"
+        name="jmbg"
+        required
+        maxlength="13"
+        #jmbgInput="ngModel"
+        placeholder="Unesite vaš JMBG"
+      />
+      <div *ngIf="jmbgInput.invalid && jmbgInput.touched" class="error-message">
+        JMBG mora da sadrzi 13 brojeva!
+      </div>
+    </div>
+    <button type="submit">Validiraj JMBG</button>
+  </form>
+    
+    
+  
+<div
+    [innerHTML]="validationMessage"
+    *ngIf="validationMessage"
+    class="message"
+    
+  >
+    <p>{{ validationMessage }}</p>
+  </div>
+    
+  
+</div>
